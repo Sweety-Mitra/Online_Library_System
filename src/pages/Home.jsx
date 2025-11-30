@@ -7,8 +7,9 @@ const categories = ["Fiction", "Non-Fiction", "Sci-Fi", "History", "Mystery"];
 
 export default function Home() {
   const books = useSelector((state) => state.books.list);
-  // pick top 3 popular by rating
-  const popular = [...books].sort((a,b)=> b.rating - a.rating).slice(0,3);
+
+  // pick top 10 popular by rating
+  const popular = [...books].sort((a, b) => b.rating - a.rating).slice(0, 10);
 
   return (
     <div>
@@ -21,7 +22,9 @@ export default function Home() {
         <h3>Categories</h3>
         <div className="cat-list">
           {categories.map((c) => (
-            <Link key={c} to={`/books/${encodeURIComponent(c)}`} className="category">{c}</Link>
+            <Link key={c} to={`/books/${encodeURIComponent(c)}`} className="category">
+              {c}
+            </Link>
           ))}
         </div>
       </section>
@@ -29,7 +32,9 @@ export default function Home() {
       <section className="popular">
         <h3>Popular Books</h3>
         <div className="grid">
-          {popular.map((b) => <BookCard key={b.id} book={b} />)}
+          {popular.map((b) => (
+            <BookCard key={b.id} book={b} />
+          ))}
         </div>
       </section>
     </div>
