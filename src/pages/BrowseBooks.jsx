@@ -28,12 +28,16 @@ export default function BrowseBooks() {
 
   return (
     <div>
-      <header className="page-header">
+      {/* <header className="page-header">
         <h2>Browse Books {category ? `— ${decodeURIComponent(category)}` : ""}</h2>
         <Link to="/add-book" className="btn">Add Book</Link>
-      </header>
+      </header> */}
 
-      <SearchBar value={query} onChange={setQuery} />
+      <SearchBar
+        value={query}
+        onChange={setQuery}
+        placeholder="Search by title or author..."
+      />
 
       <div className="grid">
         {filtered.length === 0 ? (
